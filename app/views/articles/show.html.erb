@@ -2,7 +2,7 @@
 
 <p>
   <strong>Title:</strong>
-  <%= @article.title %>
+  
 </p>
 
 <p>
@@ -10,5 +10,42 @@
   <%= @article.body %>
 </p>
 
+<%# <img src="???" alt=""> %>
+<%# image_tag 'src' %>
+<%# cl_image_tag @article.photo.key %>
+
+<div style='display: grid; grid-template-columns: 1fr 1fr 1fr;'>
+  <% @article.photos.each do |photo| %>
+    <div class="card-category" 
+        style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+        url(<%= cl_image_path photo.key %>)">
+      <%= @article.title %>
+    </div>
+  <% end %>
+</div>
+
+
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>
+
+
+<%# DONT DO THIS EVER %>
+<style>
+.card-category {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+</style>
+
+<%# THIS IS FOR TEACHING PURPOSES ONLY %>

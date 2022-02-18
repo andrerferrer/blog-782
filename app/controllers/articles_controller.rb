@@ -51,8 +51,8 @@ class ArticlesController < ApplicationController
       @article = Article.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
+    # Filtering the form
     def article_params
-      params.require(:article).permit(:title, :body)
+      params.require(:article).permit(:title, :body, photos: [])
     end
 end
